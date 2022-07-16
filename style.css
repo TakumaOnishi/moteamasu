@@ -1,0 +1,343 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap'); /*Noto Sans JP*/
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500&display=swap'); /*Shippori Mincho B1*/
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400&display=swap'); /*Zen Maru Gothic*/
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap'); /*DotGothic16*/
+@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap'); /*Hachi Maru Pop*/
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap'); /*Rampart One*/
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@500&display=swap'); /*Kaisei Decol*/
+
+*{
+   box-sizing: border-box;
+}
+
+body{
+   position: fixed;
+   padding: 0; margin: 0;
+   top : 0; left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: #111;
+   background-attachment: fixed;
+   vertical-align: top;
+   font-family: sans-serif;
+   font-size: 1.3rem;
+}
+
+#room{
+   position: absolute;
+   z-index: 1;
+   opacity: 1;
+   transition: opacity .8s ease-out;
+}
+
+#floor{
+   position: absolute;
+   z-index: 1;
+   overflow: hidden;
+   border-radius: 2vmin;
+   background-size: 40vmin;
+}
+
+#floor > *{
+   position: absolute;
+   transform: translate(-50%,-50%);
+}
+
+#floor iframe{
+   max-width: 75vmin;
+   max-height: 75vmin;
+}
+
+#floor > p{
+   pointer-events: none;
+   width: fit-content;
+   white-space: pre;
+}
+
+#floor > img{
+   cursor: pointer;
+}
+
+#vignette{
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   left: 0;
+   top: 0;
+   background: radial-gradient(#0000, #000e);
+   z-index: 8;
+   pointer-events: none;
+}
+
+#you{
+   position: absolute;
+   transform: translate(-50%, -50%);
+   left: 50%;
+   top: 50%;
+   width: 14vmin;
+   height: 14vmin;
+
+   z-index: 9;
+   pointer-events: auto;
+   opacity: 0.6;
+   transition: opacity .4s ease-out;
+}
+
+#preview img{
+   height: 50vmin;
+   mix-blend-mode: difference;
+}
+
+#message{
+   position: absolute;
+   bottom: 2vh;
+   width: 100%;
+   display: flex;
+   flex-flow: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+
+   color: white;
+   font-size: 2.5vh;
+   line-height: 4.5vh;
+   font-family:'Kaisei Decol', sans-serif;
+
+   opacity: 0;
+   transition: opacity ease-out .5s;
+   z-index: 9;
+   pointer-events: none;
+   user-select: none;
+}
+
+#message div:first-of-type{
+   margin-bottom: 1vh;
+}
+
+.option{
+   position: relative;
+   width: min(80vw, 20rem);
+   color: #fff9;
+   padding: 0 1vh;
+   border: .1vh solid transparent;
+   border-radius: 1vh;
+   cursor: pointer;
+   background-color: transparent;
+}
+
+/* .option:hover{
+   color: white;
+   border: .1vh solid white;
+} */
+
+.option:active{
+   background-color: #fff4;
+}
+
+.option ::placeholder{
+   color: #fff6;
+}
+
+.option.fileInput{
+   background-color: #4446;
+   padding: 2vh;
+}
+
+.option > input[type="file"]{
+   position: absolute;
+   margin: 0;
+   right: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   opacity: 0;
+}
+
+.option.rangeInput{
+   height: .2vh;
+   padding: 0;
+   margin: 3vh 0;
+   background: #fff6; /* バーの背景色 */
+   border-radius: .1vh; /* バーの両端の丸み */
+}
+
+.option > input[type="range"] {
+   position: absolute;
+   top: -.1vh;
+   left: -.2vh;
+   -webkit-appearance: none; /* 🚩これ無しだとスタイルがほぼ全く反映されないので注意 */
+   appearance: none;
+   outline: none; /* スライダーのアウトラインは見た目がキツイので消す */
+   height: 0; /* バーの高さ */
+   width: 100%; /* バーの幅 */
+   border: 0; /* バー周囲の線 */
+   cursor: pointer;
+}
+
+.option > input[type="range"]::-webkit-slider-thumb {
+   -webkit-appearance: none; /*  🚩デフォルトのつまみのスタイルを解除 */
+   background: white; /* 背景色 */
+   width: 3vh; /* 幅 */
+   height: 3vh; /* 高さ */
+   border-radius: 50%; /* 円形に */
+   border: none; /* デフォルトの線を消す */
+}
+
+.option > input[type="range"]::-moz-range-thumb {
+   background: white; /* 背景色 */
+   width: 3vh; /* 幅 */
+   height: 3vh; /* 高さ */
+   border-radius: 50%; /* 円形に */
+   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15); /* 影 */
+}
+/* Firefoxで点線が周りに表示されてしまう問題の解消 */
+.option > input[type="range"]::-moz-focus-outer {
+   border: 0;
+}
+
+.option.select{
+   height: 4.5vh;
+   background-color: #4446;
+}
+
+.option > select{
+   position: absolute;
+   margin: 0;
+   right: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   appearance: none;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   outline: none;
+   cursor: pointer;
+   background-color: transparent;
+   color: #fff9;
+   font-size: 2.5vh;
+   line-height: 4.5vh;
+   font-family:'Kaisei Decol', sans-serif;
+   text-align: center;
+   text-align-last: center;
+   border: none;
+}
+
+.option.select::after{
+   content: '＞';
+   font-size: 1.5vh;
+   transform: translate(-50%, -50%) rotate(90deg) scaleY(1.6);
+   position: absolute;
+   margin: 0;
+   top: 2.2vh;
+   right: -1vh;
+   width: 4.5vh;
+   height: 4.5vh;
+   pointer-events: none;
+}
+
+.option.textarea{
+   padding: 0;
+   height: fit-content;
+   min-height: 9vh;
+   font-size: 0;
+   line-height: 0;
+   background-color: #4446;
+   border: .1vh solid transparent;
+}
+
+.option > textarea{
+   resize: none;
+   appearance: none;
+   outline: none;
+   border: none;
+   background-color: transparent;
+   padding: 1vh;
+   margin: 0;
+   width: 100%;
+   height: 9vh;
+   min-height: 9vh;
+   max-height: 60vh;
+   overflow: scroll;
+   color: #fff9;
+   font-size: 2vh;
+   line-height: 3.5vh;
+   font-family: sans-serif;
+   text-align: center;
+}
+
+.option > textarea:focus{
+   color: white;
+}
+
+.option.textInput{
+   padding: 0;
+   height: fit-content;
+   font-size: 0;
+   line-height: 0;
+   background-color: #4446;
+   border: .1vh solid transparent;
+}
+
+.option > input[type="text"] {
+   resize: none;
+   appearance: none;
+   outline: none;
+   border: none;
+   background-color: transparent;
+   margin: 0;
+   width: 100%;
+   overflow: scroll;
+   color: #fff9;
+   font-size: 2.5vh;
+   line-height: 4.5vh;
+   font-family:'Kaisei Decol', sans-serif;
+   text-align: center;
+}
+
+.option > input[type="text"]:focus{
+   color: white;
+}
+
+.option.colorInput{
+   padding: 0;
+   height: fit-content;
+   border: .1vh solid transparent;
+   height: 4.5vh;
+   overflow: hidden;
+   position: relative;
+   background-color: #4446;
+}
+
+.option > input[type="color"] {
+   position: absolute;
+   top: 0;
+   left: 0;
+   opacity: 0;
+   appearance: none;
+   outline: none;
+   border: none;
+   box-sizing: border-box;
+   margin: 0;
+   width: 100%;
+   height: 100%;
+}
+
+.option > input[type=color]::-webkit-color-swatch{
+   display: none;
+}
+
+.option > input[type=color]::-moz-color-swatch{
+   display: none;
+}
+
+.option.colorInput > p{
+   position: absolute;
+   margin: 0;
+   width: 100%;
+   height: 100%;
+   font-size: 2.5vh;
+   line-height: 4.5vh;
+   font-family:'Kaisei Decol', sans-serif;
+   text-align: center;
+}

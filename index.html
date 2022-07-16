@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+   <head>
+      <meta charset="UTF-8">
+      <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/ fb# website: http://ogp.me/ns/ website#">
+      <meta property="og:url" content="https://サイトURL" />
+      <meta property="og:type" content="website"/>
+      <meta property="og:title" content="モテアマス三軒茶屋"/>
+      <meta property="og:site_name" content="モテアマス三軒茶屋" />
+      <meta property="og:image" content="https://サイトURL/ogp.png" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="google" content="notranslate">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta name="discription" content="モテアマス三軒茶屋（もてあますさんげんぢゃや）は、東京都世田谷区にあるシェアハウス。2016年11月に実業家のカズキタによって開館された。もとは社員寮であったこの建物にひとりで住み始めたカズキタが、15LDKの大空間を持て余したことから「モテアマス」の名がついたという。以来、その恵まれた立地と懐の広いコミュニティに多くのフリーランサーが流れ着き、今では駐車場やテントにまで「人を持て余す」シェアハウスになっている。">
+      <title>モテアマス三軒茶屋</title>
+      <link rel="icon" href="favicon.ico">
+      <script src="script.js"></script>
+      <link rel="stylesheet" href="style.css">
+
+   </head>
+   <body>
+      <div id="vignette">
+         <img id="you" src="./images/you.svg">
+         <div id="message">
+            <div></div>
+            <div class="option"></div>
+            <div class="option"></div>
+            <div class="option"></div>
+         </div>
+      </div>
+      <div id="room"></div>
+      <script>
+         const message = document.getElementById("message");
+         const option = document.querySelectorAll("#message > div");
+         function tell(text){
+            if(option[1].innerHTML) return;
+            message.style.transition = "none";
+            message.style.opacity = "1";
+            option[0].innerHTML = text;
+            setTimeout(() => {
+               if(option[0].innerHTML == text){
+                  message.style.transition = "opacity ease-out .5s";
+                  message.style.opacity = "0";
+               };
+            }, 2000);
+         }
+      </script>
+   </body>
+</html>

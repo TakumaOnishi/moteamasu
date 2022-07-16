@@ -1,0 +1,230 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@500&display=swap');
+
+body{
+   position: fixed;
+   padding: 0; margin: 0;
+   top : 0; left: 0;
+   width: 100%;
+   height: 100%;
+   /* background: linear-gradient(30deg, #e0e8e8 30%, #f0f5f5 60%, #fff 80%); */
+   background-color: #111;
+   background-attachment: fixed;
+   vertical-align: top;
+   font-family: sans-serif;
+}
+
+#rumor{
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   color: white;
+   font-size: 2vh;
+   line-height: 4vh;
+   opacity: 1;
+   pointer-events: none;
+   transition: all ease 1s;
+   text-align: center;
+   bottom: 2vh;
+   z-index: 9;
+   font-family:'Kaisei Decol', serif;
+}
+
+#city{
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 5;
+   opacity: 0;
+   transition: opacity 2s ease-in;
+   /* filter: blur(1px); */
+}
+
+.svg{
+   position: absolute;
+   left: 0;
+   top: 0;
+   /* mix-blend-mode: difference; */
+   z-index: 5;
+}
+
+
+#vignette{
+   position: absolute;
+   width: 200%;
+   height: 200%;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%,-50%);
+   background: radial-gradient(#00000000 20%, #000000 70%);
+   z-index: 8;
+   pointer-events: none;
+}
+
+#home{
+   position: absolute;
+   width: 200vmin;
+   height: 385vmin;
+   z-index: 1;
+   transform-origin: 170vmin 60vmin;
+   transform: translate(-170vmin, -60vmin) rotateZ(45deg);
+   background-color: #000;
+   visibility: hidden;
+   z-index: 0;
+}
+
+#home div{
+   position: absolute;
+   margin: 0;
+   background-color: #333;
+   border:solid #000 5vmin;
+   box-sizing: content-box;
+   overflow: hidden;
+}
+
+/*
+.floor{
+   position: absolute;
+   display: flex;
+   overflow:visible;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+}
+*/
+.stair12{
+   left: 35vmin; top: 0; width: 155vmin; height: 25vmin;
+}
+
+#ldk{
+   left: 0; top: 30vmin; width: 135vmin; height: 165vmin;
+}
+
+#enter{
+   left: 140vmin; top: 30vmin; width: 50vmin; height: 50vmin;
+}
+
+#study{
+   left: 140vmin; top: 85vmin; width: 50vmin; height: 110vmin;
+}
+
+#cor1_1{
+   left: 55vmin; top: 200vmin; width: 25vmin; height: 145vmin;
+}
+
+#w1_1{
+   left: 0; top: 30vmin; width: 30vmin; height: 30vmin;
+}
+#w1_2{
+   left: 35vmin; top: 30vmin; width: 45vmin; height: 30vmin;
+}
+#w1_3{
+   left: 0; top: 200vmin; width: 50vmin; height: 25vmin;
+}
+#w1_4{
+   left: 0; top: 230vmin; width: 50vmin; height: 25vmin;
+}
+
+#b1_1{
+   left: 0; top: 260vmin; width: 50vmin; height: 25vmin;
+}
+#b1_2{
+   left: 0; top: 290vmin; width: 25vmin; height: 25vmin;
+}
+#b1_3{
+   left: 0; top: 320vmin; width: 25vmin; height: 25vmin;
+}
+#b1_4{
+   left: 30vmin; top: 350vmin; width: 50vmin; height: 25vmin;
+}
+
+#cor1_2{
+   left: 30vmin; top: 290vmin; width: 20vmin; height: 55vmin;
+}
+
+#r1_1{
+   left: 85vmin; top: 200vmin; width: 105vmin; height: 55vmin;
+}
+#r1_2{
+   left: 85vmin; top: 260vmin; width: 105vmin; height: 55vmin;
+}
+#r1_3{
+   left: 85vmin; top: 320vmin; width: 105vmin; height: 55vmin;
+}
+/*
+.stair23{
+   left: 35vmin; top: 130vmin; width: 20vmin; height: 95vmin;
+}
+
+#cor2{
+   left: 35vmin; top: 30vmin; width: 45vmin; height: 345vmin;
+}
+
+#w2_1{
+   left: 0; top: 30vmin; width: 30vmin; height: 25vmin;
+}
+#w2_2{
+   left: 0; top: 60vmin; width: 30vmin; height: 40vmin;
+}
+#w2_3{
+   left: 0; top: 105vmin; width: 30vmin; height: 40vmin;
+}
+#w2_4{
+   left: 0; top: 150vmin; width: 30vmin; height: 25vmin;
+}
+#w2_5{
+   left: 0; top: 180vmin; width: 30vmin; height: 75vmin;
+}
+
+#b2_1{
+   left: 0; top: 260vmin; width: 30vmin; height: 35vmin;
+}
+#b2_2{
+   left: 0; top: 300vmin; width: 30vmin; height: 35vmin;
+}
+#b2_3{
+   left: 0; top: 340vmin; width: 30vmin; height: 35vmin;
+}
+
+#r2_1{
+   left: 85vmin; top: 30vmin; width: 105vmin; height: 45vmin;
+}
+#r2_2{
+   left: 85vmin; top: 80vmin; width: 105vmin; height: 45vmin;
+}
+#r2_3{
+   left: 85vmin; top: 130vmin; width: 105vmin; height: 45vmin;
+}
+#r2_4{
+   left: 85vmin; top: 180vmin; width: 105vmin; height: 45vmin;
+}
+#r2_5{
+   left: 85vmin; top: 230vmin; width: 105vmin; height: 45vmin;
+}
+#r2_6{
+   left: 85vmin; top: 280vmin; width: 105vmin; height: 45vmin;
+}
+#r2_7{
+   left: 85vmin; top: 330vmin; width: 105vmin; height: 45vmin;
+}
+
+#cor3{
+   left: 60vmin; top: 200vmin; width: 95vmin; height: 25vmin;
+}
+
+#r3_1{
+   left: 60vmin; top: 50vmin; width: 45vmin; height: 145vmin;
+}
+#r3_2{
+   left: 110vmin; top: 50vmin; width: 45vmin; height: 145vmin;
+}
+#r3_3{
+   left: 60vmin; top: 230vmin; width: 45vmin; height: 145vmin;
+}
+#r3_4{
+   left: 110vmin; top: 230vmin; width: 45vmin; height: 145vmin;
+}
+*/
